@@ -24,18 +24,6 @@ jobs:
           ${{ runner.os }}-npm-${{ env.cache-name }}-
           ${{ runner.os }}-npm-
           ${{ runner.os }}-
-    - name: Cache node modules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
-      with:
-        # npm cache files are stored in `~/.npm` on Linux/macOS
-        path: ./node_modules
-        key: ${{ runner.os }}-node-modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules-${{ env.cache-name }}-
-          ${{ runner.os }}-node-modules-
-          ${{ runner.os }}-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
