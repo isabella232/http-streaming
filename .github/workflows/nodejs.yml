@@ -20,8 +20,9 @@ jobs:
     - run: sudo apt-get install ffmpeg firefox xvfb
     - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - run: sudo dpkg -i google-chrome-stable_current_amd64.deb
-    - run: Xvfb :99 &
+    - run: Xvfb :99 -screen 0 1920x1080x24+32 &
     - run: npm ci
     - run: npm test
       env:
         CI: true
+        DISPLAY: ':99'
