@@ -6,10 +6,6 @@ jobs:
   test:
     runs-on: macos-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
     - uses: actions/checkout@v2
     - name: Cache npm
@@ -24,10 +20,9 @@ jobs:
           ${{ runner.os }}-npm-${{ env.cache-name }}-
           ${{ runner.os }}-npm-
           ${{ runner.os }}-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+    - name: Setup the correct Node version using nvm
+      shell: bash -l {0}
+      run: nvm install
     - run: npm ci
     - run: npm test
       env:
