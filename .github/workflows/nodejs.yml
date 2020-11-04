@@ -44,3 +44,5 @@ jobs:
     - run: npm test
       env:
         DISPLAY: ':99'
+        BROWSER_STACK_USERNAME: ${{ secrets.BROWSER_STACK_USERNAME }}
+        BROWSER_STACK_ACCESS_KEY: ${{ secrets.BROWSER_STACK_ACCESS_KEY }}
