@@ -1543,6 +1543,7 @@ QUnit.test('refreshMedia: updates master and media playlists for child loader', 
   const newMasterXml = testDataManifests['dash-live'];
 
   loader.masterXml_ = newMasterXml;
+  loader.handleMaster_();
   childLoader.refreshMedia_(loader.media().id);
 
   assert.notEqual(loader.master, oldMaster, 'new master set on master loader');
